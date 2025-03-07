@@ -40,7 +40,7 @@ module.exports = {
       },
       email: {
         type: Sequelize.STRING,
-        aloowNull: fakse,
+        aloowNull: false,
         unique: true
       },
       createdAt: {
