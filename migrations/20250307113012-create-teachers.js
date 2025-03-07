@@ -40,7 +40,7 @@ module.exports = {
       },
       subject: {
         type: Sequelize.STRING,
-        aloowNull: false,
+        allowNull: false,
         unique: true
       },
       createdAt: {
@@ -49,7 +49,7 @@ module.exports = {
       },
       updatedAt: {
         type: Sequelize.DATE,
-        aloowNull: false
+        allowNull: false
       }
     });
   },

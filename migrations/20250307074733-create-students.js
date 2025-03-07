@@ -32,7 +32,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         primaryKey: true,
-        alowNull: false
+        allowNull: false
       },
       name: {
         type: Sequelize.STRING,
@@ -40,7 +40,7 @@ module.exports = {
       },
       email: {
         type: Sequelize.STRING,
-        aloowNull: false,
+        allowNull: false,
         unique: true
       },
       createdAt: {
@@ -49,7 +49,7 @@ module.exports = {
       },
       updatedAt: {
         type: Sequelize.DATE,
-        aloowNull: false
+        allowNull: false
       }
     });
   },
