@@ -48,4 +48,4 @@ module.exports = (Sequelize) => {
 
   );
   return Student;
-}
+};
