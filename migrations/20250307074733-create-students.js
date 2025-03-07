@@ -32,7 +32,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         primaryKey: true,
-        aloowNull: false
+        alowNull: false
       },
       name: {
         type: Sequelize.STRING,
