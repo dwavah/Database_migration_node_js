@@ -8,4 +8,17 @@ router.post("/students", async (req, res) => {
     const student = await Student.create(req.body);
     res.status(201).json(student);
 });
- 
+
+// Get all students
+router.get("/students", async(req,res) => {
+    const students = await Student.findAll();
+    res.json(students);
+});
+
+//Get students ID
+router.get("/student/:id", async (req, res) => {
+    const student = await Students.findyByPk(req.params.id);
+    res.json(student);
+});
+
+// 
