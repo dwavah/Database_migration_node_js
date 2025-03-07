@@ -33,3 +33,5 @@ router.delete("/courses/:id", async (req, res) => {
 });
 
 module.exports = router;
+
+
