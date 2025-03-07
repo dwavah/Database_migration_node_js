@@ -2,35 +2,78 @@ const express = require("express");
 const router = express.Router();
 const { Assignment } = require("../models");
 
-
-// creating a assignment
+// Create an Assignment
 router.post("/assignments", async (req, res) => {
-    const assignment = await Assignment.create(req.body);
-    res.status(201).json(assignment);
+    try {
+        const { title, due_date } = req.body;
+
+        // Validate input
+        if (!title || !due_date) {
+            return res.status(400).json({ error: "Title and Due Date are required" });
+        }
+
+        const assignment = await Assignment.create({ title, due_date });
+        res.status(201).json(assignment);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
 });
 
-// Get all assignment
-router.get("/assignments", async(req,res) => {
-    const assignment = await Assignment.findAll();
-    res.json(assignments);
+// Get all Assignments
+router.get("/assignments", async (req, res) => {
+    try {
+        const assignments = await Assignment.findAll();
+        res.json(assignments);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
 });
 
-//Get assignment ID
+// Get Assignment by ID
 router.get("/assignments/:id", async (req, res) => {
-    const assignment = await Assignment.findyByPk(req.params.id);
-    res.json(assignment);
+    try {
+        const assignment = await Assignment.findByPk(req.params.id);
+
+        if (!assignment) {
+            return res.status(404).json({ error: "Assignment not found" });
+        }
+
+        res.json(assignment);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
 });
 
-// Update assignment
+// Update Assignment by ID
 router.put("/assignments/:id", async (req, res) => {
-    await Assignment.update(req.body, { where: { id: req.params.id } });
-    res.json({ message: "Updates successfully" });
+    try {
+        const assignment = await Assignment.findByPk(req.params.id);
+        
+        if (!assignment) {
+            return res.status(404).json({ error: "Assignment not found" });
+        }
+
+        await assignment.update(req.body);
+        res.json({ message: "Updated successfully", assignment });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
 });
 
-// Delete assignment
+// Delete Assignment by ID
 router.delete("/assignments/:id", async (req, res) => {
-    await Assignment.destroy({where: { id: req.params.id } });
-    res.status(204).send();
+    try {
+        const assignment = await Assignment.findByPk(req.params.id);
+        
+        if (!assignment) {
+            return res.status(404).json({ error: "Assignment not found" });
+        }
+
+        await assignment.destroy();
+        res.json({ message: "Assignment deleted successfully" });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
 });
 
 module.exports = router;

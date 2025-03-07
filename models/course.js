@@ -26,6 +26,7 @@
 // };
 
 const { Model, DataTypes } = require("sequelize");
+
 module.exports = (sequelize) => {
   class Course extends Model {}
 
@@ -35,7 +36,7 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false
       },
-      description: {
+      description: { // ✅ Ensure this column exists
         type: DataTypes.STRING,
         allowNull: false,
         unique: true
@@ -47,7 +48,7 @@ module.exports = (sequelize) => {
       tableName: "Courses",
       timestamps: true
     }
-
   );
+
   return Course;
 };
