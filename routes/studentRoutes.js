@@ -17,8 +17,14 @@ router.get("/students", async(req,res) => {
 
 //Get students ID
 router.get("/student/:id", async (req, res) => {
-    const student = await Students.findyByPk(req.params.id);
+    const student = await Student.findyByPk(req.params.id);
     res.json(student);
 });
 
-// 
+// Update student
+router.put("/students/:id", async (req, res) => {
+    await Student.update(req.body, { where: { id: req.params.id } });
+    res.json({ message: "Updates successfully" });
+});
+
+//
