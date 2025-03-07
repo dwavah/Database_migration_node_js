@@ -30,6 +30,7 @@ router.put("/students/:id", async (req, res) => {
 // Delete Student
 router.delete("/students/:id", async (req, res) => {
     await Student.destroy({where: { id: req.params.id } });
+    res.status(204).send();
 });
 
 module.exports = router;
