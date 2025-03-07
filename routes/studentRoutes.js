@@ -27,4 +27,9 @@ router.put("/students/:id", async (req, res) => {
     res.json({ message: "Updates successfully" });
 });
 
-//
+// Delete Student
+router.delete("/students/:id", async (req, res) => {
+    await Student.destroy({where: { id: req.params.id } });
+});
+
+
