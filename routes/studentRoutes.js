@@ -16,7 +16,7 @@ router.get("/students", async(req,res) => {
 });
 
 //Get students ID
-router.get("/student/:id", async (req, res) => {
+router.get("/students/:id", async (req, res) => {
     const student = await Student.findyByPk(req.params.id);
     res.json(student);
 });
