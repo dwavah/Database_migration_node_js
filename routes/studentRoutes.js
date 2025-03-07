@@ -32,4 +32,4 @@ router.delete("/students/:id", async (req, res) => {
     await Student.destroy({where: { id: req.params.id } });
 });
 
-
+module.exports = router;
