@@ -23,8 +23,8 @@
 //   return Student;
 // };
 
-const { Model, DataTypes, Sequelize } = require("sequelize");
-module.exports = (Sequelize) => {
+const { Model, DataTypes } = require("sequelize");
+module.exports = (sequelize) => {
   class Student extends Model {}
 
   Student.init(

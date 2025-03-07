@@ -23,8 +23,9 @@
 //   return Assignment;
 // };
 
-const { Model, DataTypes, Sequelize } = require("sequelize");
-module.exports = (Sequelize) => {
+const { Model, DataTypes } = require("sequelize");
+
+module.exports = (sequelize) => {  // Fix: lowercase 'sequelize'
   class Assignment extends Model {}
 
   Assignment.init(
@@ -40,12 +41,12 @@ module.exports = (Sequelize) => {
       }
     },
     {
-      sequelize,
+      sequelize,  // Fix: lowercase 'sequelize'
       modelName: "Assignment",
       tableName: "Assignments",
       timestamps: true
     }
-
   );
+
   return Assignment;
 };
