@@ -27,7 +27,7 @@ router.put("/courses/:id", async (req, res) => {
     res.json({ message: "Updated successfully" });
 });
 
-// Delete Student
+// Delete course
 router.delete("/courses/:id", async (req, res) => {
     await Course.destroy({where: { id: req.params.id } });
 });
