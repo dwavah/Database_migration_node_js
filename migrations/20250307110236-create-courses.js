@@ -27,7 +27,7 @@ const { Sequelize } = require("sequelize");
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable("Students", {
+    await queryInterface.createTable("Courses", {
       id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
